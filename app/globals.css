@@ -431,6 +431,17 @@ td {
   animation: pulse 1.2s ease-in-out infinite;
 }
 
+.redirect-description {
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 12px 0 8px;
+}
+
+.redirect-card .redirect-description + .sub {
+  margin-bottom: 28px;
+}
+
 @keyframes pulse {
   0%, 100% { opacity: 0.3; transform: scale(0.9); }
   50% { opacity: 1; transform: scale(1.2); }

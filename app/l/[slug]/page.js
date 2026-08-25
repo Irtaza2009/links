@@ -42,6 +42,7 @@ export default async function RedirectPage({ params }) {
   return (
     <Redirector
       target={plan.target}
+      description={link.description}
       iosAppScheme={plan.iosAppScheme}
       androidIntent={plan.androidIntent}
       serverOS={parsed.os}

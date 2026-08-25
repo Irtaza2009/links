@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function Redirector({ target, iosAppScheme, androidIntent, serverOS }) {
+export default function Redirector({ target, description, iosAppScheme, androidIntent, serverOS }) {
   const [showFallback, setShowFallback] = useState(false);
 
   useEffect(() => {
@@ -62,6 +62,7 @@ export default function Redirector({ target, iosAppScheme, androidIntent, server
         <div className="dot" />
         <p className="eyebrow">deeplinker</p>
         <h1 style={{ fontSize: 18 }}>Taking you there…</h1>
+        {description && <p className="redirect-description">{description}</p>}
         <p className="sub">
           If nothing happens in a second or two, tap continue below.
         </p>

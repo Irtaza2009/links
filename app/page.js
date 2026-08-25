@@ -6,6 +6,7 @@ export default function Home() {
   const [target, setTarget] = useState("");
   const [slug, setSlug] = useState("");
   const [label, setLabel] = useState("");
+  const [description, setDescription] = useState("");
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -25,7 +26,7 @@ export default function Home() {
       const res = await fetch("/api/links", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ target, slug, label }),
+        body: JSON.stringify({ target, slug, label, description }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong");
@@ -33,6 +34,7 @@ export default function Home() {
       setTarget("");
       setSlug("");
       setLabel("");
+      setDescription("");
     } catch (err) {
       setError(err.message);
     } finally {
@@ -103,6 +105,19 @@ export default function Home() {
               value={label}
               onChange={(e) => setLabel(e.target.value)}
             />
+          </div>
+
+          <div className="field">
+            <label htmlFor="description">Visitor-facing description (optional)</label>
+            <input
+              id="description"
+              type="text"
+              placeholder="e.g. Check out our new merch drop"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              maxLength={120}
+            />
+            <p className="hint">Shown on the page before visitors continue to your link.</p>
           </div>
 
           <button className="btn btn-block" type="submit" disabled={loading}>
